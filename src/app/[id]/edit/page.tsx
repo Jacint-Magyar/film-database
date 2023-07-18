@@ -31,18 +31,13 @@ export default async function EditFilmPage({
       age_limit: data.get("age-limit"),
     };
 
-    const response = await fetch(
-      `${process.env.API_ENDPOINT}/films/${params.id}`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(requestBody),
-      }
-    );
-
-    console.log(response.json());
+    await fetch(`${process.env.API_ENDPOINT}/films/${params.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+    });
 
     revalidatePath(`/${params.id}`);
     redirect(`/${params.id}`);
