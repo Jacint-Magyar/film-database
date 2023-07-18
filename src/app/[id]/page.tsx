@@ -1,7 +1,7 @@
 import { Metadata, ResolvingMetadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { DeleteFilm } from "./DeleteFilm";
+import { DeleteFilm } from "@components/DeleteFilm";
 import { Film, AGE_LIMITS, AGE_LIMIT } from "@types";
 import { notFound } from "next/navigation";
 
@@ -70,7 +70,7 @@ export default async function FilmPage({ params }: { params: { id: string } }) {
               alt={AGE_LIMIT[film.age_limit]}
             />
           </span>
-          <p className="text-sm text-slate-300">{AGE_LIMIT[film.age_limit]}</p>
+          <p className="text-sm text-slate-400">{AGE_LIMIT[film.age_limit]}</p>
         </div>
       </div>
       <div className="w-full mt-8 flex justify-between items-center">

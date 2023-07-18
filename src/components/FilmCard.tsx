@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Film, AGE_LIMITS, AGE_LIMIT } from "@types";
 
-export function Item({ _id, cover_image, title, age_limit }: Film) {
+export function FilmCard({ _id, cover_image, title, age_limit }: Film) {
   return (
     <li className="relative group">
       <div className="rounded relative aspect-2/3 overflow-hidden">

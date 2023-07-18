@@ -1,5 +1,5 @@
 import { Film } from "@types";
-import { FilmList } from "@app/FilmList";
+import { FilmList } from "@components/FilmList";
 
 export default async function Home() {
   const response = await fetch(`${process.env.API_ENDPOINT}/films/`, {

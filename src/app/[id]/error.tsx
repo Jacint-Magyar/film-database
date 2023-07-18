@@ -1,6 +1,5 @@
 "use client";
 
-import { useParams } from "next/navigation";
 import { useEffect } from "react";
 
 export default function Error({
@@ -10,10 +9,7 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  const params = useParams();
-
   useEffect(() => {
-    console.error(params);
     console.error(error);
   }, [error]);
 

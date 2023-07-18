@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Select } from "@components/Select";
-import { Item } from "@components/Item";
+import { FilmCard } from "@components/FilmCard";
 import { Film, AGE_LIMIT } from "@types";
 import { useState } from "react";
 
@@ -43,11 +43,17 @@ export function FilmList({ films }: { films: Film[] }) {
           </Link>
         </div>
       </div>
-      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-8">
-        {filteredFilms?.map((film: Film) => (
-          <Item key={film._id} {...film} />
-        ))}
-      </ul>
+      {filteredFilms.length > 0 ? (
+        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-8">
+          {filteredFilms?.map((film: Film) => (
+            <FilmCard key={film._id} {...film} />
+          ))}
+        </ul>
+      ) : (
+        <div className="text-center text-slate-400 py-8">
+          <p>There aren't any films with the specified age limit.</p>
+        </div>
+      )}
     </main>
   );
 }

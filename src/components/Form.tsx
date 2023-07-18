@@ -10,12 +10,12 @@ type FormProps = {
   handleSubmit(data: FormData): Promise<void>;
 };
 
-export const Form = (props: FormProps) => {
+export const Form = ({ data, handleSubmit }: FormProps) => {
   const router = useRouter();
   const coverImgRef = useRef<HTMLImageElement>(null);
+  const options = Object.entries(AGE_LIMIT);
   const inputClasses = `w-full rounded px-4 py-2 bg-slate-600 border border-slate-600 hover:border-slate-400 focus-within:bg-slate-500 outline-none`;
   const placeholderImgPath = "/images/film-placeholder.png";
-  const options = Object.entries(AGE_LIMIT);
 
   const displayImgFromUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (coverImgRef.current) {
@@ -27,7 +27,7 @@ export const Form = (props: FormProps) => {
 
   return (
     <form
-      action={props.handleSubmit}
+      action={handleSubmit}
       className="w-full md:w-[40rem] mx-auto flex flex-wrap py-8"
     >
       <div className="md:w-2/5 md:pe-4 flex flex-col">
@@ -40,13 +40,13 @@ export const Form = (props: FormProps) => {
           name="cover-image"
           required
           className={inputClasses}
-          defaultValue={props.data?.cover_image}
+          defaultValue={data?.cover_image}
           onChange={displayImgFromUrl}
         />
         <div className="relative mt-2 aspect-[2/3] rounded bg-slate-600 overflow-hidden">
           <img
             ref={coverImgRef}
-            src={props.data?.cover_image ?? placeholderImgPath}
+            src={data?.cover_image ?? placeholderImgPath}
             alt="film cover"
             className="h-full object-cover"
           />
@@ -63,7 +63,7 @@ export const Form = (props: FormProps) => {
             name="title"
             required
             className={inputClasses}
-            defaultValue={props.data?.title}
+            defaultValue={data?.title}
           />
         </div>
         <div className="mt-6 flex flex-col">
@@ -76,7 +76,7 @@ export const Form = (props: FormProps) => {
             rows={6}
             required
             className={inputClasses}
-            defaultValue={props.data?.description}
+            defaultValue={data?.description}
           ></textarea>
         </div>
         <div className="mt-6 flex flex-col">
@@ -88,7 +88,7 @@ export const Form = (props: FormProps) => {
             name="age-limit"
             required
             options={options}
-            defaultValue={props.data?.age_limit}
+            defaultValue={data?.age_limit}
           >
             <option value="">Select an age limit</option>
           </Select>
