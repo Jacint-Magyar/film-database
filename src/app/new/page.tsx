@@ -18,7 +18,7 @@ export default async function NewFilmPage() {
       age_limit: data.get("age-limit"),
     };
 
-    const response = await fetch(`${process.env.API_ENDPOINT}/films`, {
+    await fetch(`${process.env.API_ENDPOINT}/films`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
