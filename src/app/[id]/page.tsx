@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { DeleteFilm } from "./DeleteFilm";
 import { Film, AGE_LIMITS, AGE_LIMIT } from "@types";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: { id: string };
@@ -37,6 +38,9 @@ export default async function FilmPage({ params }: { params: { id: string } }) {
       cache: "no-store",
     }
   );
+  if (!response.ok) {
+    notFound();
+  }
   const film: Film = await response.json();
 
   return (
