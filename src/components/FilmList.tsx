@@ -34,7 +34,7 @@ export function FilmList({ films }: { films: Film[] }) {
             <option value="">All age limits</option>
           </Select>
         </div>
-        <div className="">
+        <div>
           <Link
             href={"/new"}
             className="block text-lg bg-slate-200 text-slate-800 rounded px-2 py-1 hover:bg-slate-300 focus-within:border-slate-300 outline-none"
@@ -51,7 +51,7 @@ export function FilmList({ films }: { films: Film[] }) {
         </ul>
       ) : (
         <div className="text-center text-slate-400 py-8">
-          <p>There aren't any films with the specified age limit.</p>
+          <p>There aren not any films with the specified age limit.</p>
         </div>
       )}
     </main>
