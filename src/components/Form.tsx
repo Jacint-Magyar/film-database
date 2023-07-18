@@ -28,7 +28,7 @@ export const Form = ({ data, handleSubmit }: FormProps) => {
   return (
     <form
       action={handleSubmit}
-      className="w-full md:w-[40rem] mx-auto flex flex-wrap py-8"
+      className="w-full md:w-[40rem] mx-auto flex flex-wrap py-8 px-4 md:px-0"
     >
       <div className="md:w-2/5 md:pe-4 flex flex-col">
         <label htmlFor="cover-image" className="text-sm">
@@ -52,7 +52,7 @@ export const Form = ({ data, handleSubmit }: FormProps) => {
           />
         </div>
       </div>
-      <div className="md:w-3/5 md:ps-4 flex flex-col">
+      <div className="w-full md:w-3/5 md:ps-4 flex flex-col">
         <div className="mt-6 md:mt-0 flex flex-col">
           <label htmlFor="title" className="text-sm">
             Film title
