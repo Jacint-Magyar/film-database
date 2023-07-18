@@ -10,7 +10,7 @@ type Props = {
 
 export async function generateMetadata(
   { params }: Props,
-  parent?: ResolvingMetadata
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
   const response = await fetch(
     `${process.env.API_ENDPOINT}/films/${params.id}`,

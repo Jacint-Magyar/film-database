@@ -1,17 +1,16 @@
 "use client";
 
-import { useRef, forwardRef } from "react";
+import { useRef } from "react";
 import { Select } from "./Select";
 import { Film, AGE_LIMIT } from "@types";
 import { useRouter } from "next/navigation";
 
 type FormProps = {
   data?: Film;
-  // handleSubmit(data: FormData): Promise<void>;
-  handleSubmit: React.FormEventHandler<HTMLFormElement>;
+  handleSubmit(data: FormData): Promise<void>;
 };
 
-export const Form = forwardRef<HTMLFormElement, FormProps>((props, ref) => {
+export const Form = (props: FormProps) => {
   const router = useRouter();
   const coverImgRef = useRef<HTMLImageElement>(null);
   const inputClasses = `w-full rounded px-4 py-2 bg-slate-600 border border-slate-600 hover:border-slate-400 focus-within:bg-slate-500 outline-none`;
@@ -28,8 +27,7 @@ export const Form = forwardRef<HTMLFormElement, FormProps>((props, ref) => {
 
   return (
     <form
-      ref={ref}
-      onSubmit={props.handleSubmit}
+      action={props.handleSubmit}
       className="w-full md:w-[40rem] mx-auto flex flex-wrap py-8"
     >
       <div className="md:w-2/5 md:pe-4 flex flex-col">
@@ -113,4 +111,4 @@ export const Form = forwardRef<HTMLFormElement, FormProps>((props, ref) => {
       </div>
     </form>
   );
-});
+};

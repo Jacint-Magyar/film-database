@@ -1,4 +1,4 @@
-import { FormOld } from "@components/FormOld";
+import { Form } from "@components/Form";
 import { redirect } from "next/navigation";
 import { Film } from "@types";
 import { revalidatePath } from "next/cache";
@@ -51,7 +51,7 @@ export default async function EditFilmPage({
   return (
     <>
       <h1 className="text-3xl text-center">Edit film</h1>
-      <FormOld data={film} handleSubmit={editFilm} />
+      <Form data={film} handleSubmit={editFilm} />
     </>
   );
 }
