@@ -14,14 +14,17 @@ export function Item({ _id, cover_image, title, age_limit }: Film) {
           className="object-cover group-hover:scale-105 transition-transform"
         />
       </div>
-      <div className="flex flex-wrap items-center gap-2 pt-4">
+      <div className="flex justify-between items-start gap-2 pt-4">
         <Link
           href={`/${_id}`}
-          className="text-xl after:block after:absolute after:inset-0"
+          className="text-xl after:block after:absolute after:inset-0 truncate"
         >
           {title}
         </Link>
-        <span className="relative inline-block w-8 h-8">
+        <span
+          className="relative inline-block w-8 h-8"
+          style={{ minWidth: 32 }}
+        >
           <Image
             src={`/images/${AGE_LIMITS[age_limit]}.png`}
             fill={true}
