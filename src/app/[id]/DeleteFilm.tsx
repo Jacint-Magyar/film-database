@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { revalidatePath } from "next/cache";
 
 export function DeleteFilm({ id }: { id: string }) {
   const router = useRouter();
@@ -14,8 +13,8 @@ export function DeleteFilm({ id }: { id: string }) {
         await fetch(`/api/films/${id}`, {
           method: "DELETE",
         });
-        revalidatePath("/");
         router.push("/");
+        router.refresh();
       } catch (error) {
         console.log(error);
       }
